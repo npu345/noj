@@ -1,25 +1,21 @@
 #include<stdio.h>
 int main()
 {
-	int y,m,d,m2;
-	int n=0;
-	scanf("%d-%d-%d",&y,&m,&d);
-	if((y%4==0&&y%100!=0)||(y%400==0))m2=29;
-	else m2=28;
-	switch(m){
-		case 1:n=d;break;
-		case 2:n=d+31;break;
-		case 3:n=31+m2+d;break;
-		case 4:n=62+m2+d;break;
-		case 5:n=92+m2+d;break;
-		case 6:n=123+m2+d;break;
-		case 7:n=153+m2+d;break;
-		case 8:n=184+m2+d;break;
-		case 9:n=215+m2+d;break;
-		case 10:n=245+m2+d;break;
-		case 11:n=276+m2+d;break;
-		default :n=306+m2+d;
-		}
-	printf("%d\n",n);
-	return 0;
+    int y, m, d,days,sum=0,i;
+    scanf("%d-%d-%d", &y, &m, &d);
+    for(i=1;i<m;i++){
+       switch(i){
+         case 2:
+     	 days=28;
+     	 if((y%4==0&&y%100!=0)||(y%400==0))days++;
+     	 break;
+	     case 4:case 6:case 9:case 11:days=30;break;
+	     default:days=31;
+
+	 }
+	 sum+=days;
+    }
+	 sum=sum+d;
+	 printf("%d\n",sum);
+    return 0;
 }
